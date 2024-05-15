@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block head%}
+<link rel = "stylesheet" href="{{url_for('static',filename='css/detail.css')}}">
+{% endblock %}
+{% block title%}{{ Tmc.name }}{%endblock%}
+
+{% block li%}
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{{url_for('databases.serch')}}">
+        <input class="form-control mr-sm-2" type="search" placeholder="关键字" aria-label="Search" name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+    </form>
+{% endblock %}
+
+{% block body%}
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col"></div>
+            <div class="col-10" style="padding: 20px;">
+                <h3 class="page-name">{{Tmc.name}}</h3>
+                <div class="side-question">
+                    <img class="side-question-avatar" src="{{ url_for('static', filename=Tmc.picture.data) }}" alt="">
+                </div>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【药材别名】：{{Tmc.othername}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【外语名】：{{Tmc.englishname}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【产地分布】{{Tmc.source}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【药用部位】{{Tmc.produce}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【药材性状】{{Tmc.shap}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【性味归经】{{Tmc.stc}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【功效与作用】{{Tmc.effect}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【临床应用】{{Tmc.application}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【药理研究】{{Tmc.study}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【化学成分】{{Tmc.composition}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【使用禁忌】{{Tmc.taboo}}</pre>
+                <pre class="Tmc-description" style="white-space:pre-wrap; word-wrap: break-word;">【药方】{{Tmc.formula}}</pre>
+                
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

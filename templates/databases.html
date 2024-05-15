@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head%}
+<link rel = "stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+{% block title%}安中医{% endblock %}
+
+{% block li%}
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{{url_for('databases.serch')}}">
+        <input class="form-control mr-sm-2" type="search" placeholder="关键字" aria-label="Search" name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+    </form>
+{% endblock %}
+
+{% block body%}
+        <div class="row" style="margin-top: 20px;">
+            <div class="col"></div>
+            <div class="col-10">
+                <ul class="question-ul">
+                    {% for Tmc in Tmcs %}
+                    <li>
+                        <div class="side-question">
+                            <img class="side-question-avatar" src="{{ url_for('static', filename=Tmc.picture.data) }}" alt="">
+                        </div>
+                        <div class="question-main">
+                            <div class="question-name"><a href="{{url_for('databases.da_detail',da_id=Tmc.id )}}">{{Tmc.name}}</a></div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col"></div>
+        </div>
+{%endblock%}

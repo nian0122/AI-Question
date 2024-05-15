@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.4.6.min.css') }}">
+    <link rel = "stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    {% block head%}{% endblock %}
+    <title>{% block title%}{% endblock %}</title>
+</head>
+
+<body>
+        <nav>
+        <div class="link-group">
+            <a href="https://www.ahtcm.edu.cn/" target="_blank">
+                <img src="../static/images/school.jpg" alt="" width="50px">
+            </a>
+            <a href="https://www.ahtcm.edu.cn/" target="_blank">安徽中医药大学</a>
+            <a href="/">首页</a>
+            <a href="{{url_for('qa.public_question')}}">发布问答</a>
+            <a href="{{url_for('voiceQA.save_recording')}}">AI问答</a>
+            <a href="{{url_for('databases.index')}}">中医药库</a>
+        </div>
+
+        {% block li %}{% endblock %}
+
+        {% if user %}
+        <li class="nav-item">
+            <span class = " nav-link">{{user.username}}</span>
+        </li>
+         <div class="btn-group">
+            <a href="{{url_for('auth.logout')}}">退出登录</a>
+        </div>
+        {% else%}
+        <div class="btn-group">
+            <a href="{{url_for('auth.login')}}">登录</a>
+            <a href="{{url_for('auth.register')}}">注册</a>
+        </div>
+        {% endif %}
+    </nav>
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+</body>
+
+</html>

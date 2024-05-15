@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音听写</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+    <style>
+        .container{
+        width:48%;float:left
+
+        }
+
+     @media (max-width:500px){
+           .container{
+        width:100%;float:left
+
+        }
+     }
+     .buttons1{
+     margin-right:10%;margin-top:20px;font-size: 20px;padding: 6px 10px;cursor: pointer;background-color: white;color: blue;
+        border: 1px solid #555555;border-radius: 5px;float:left;}
+     .buttons2{
+     margin-right:10%;margin-top:20px;font-size: 20px;padding: 6px 10px;cursor: pointer;background-color: white;color: blue;
+        border: 1px solid #555555;border-radius: 5px;float:right;}
+
+    .btn {
+        width: 100px; /* 设置按钮宽度 */
+        height: 50px; /* 设置按钮高度 */
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1 style="text-align:center;font-size:55px;color: white;">
+                录音识别结果展示
+            </h1>
+            <br><br><br>
+            <p style="text-align:center;color: white;">
+                语音识别是把即时语音(≤60秒)转换成对应的文字信息，支持实时返回识别结果。
+            </p>
+            <p style="text-align:center;color: white;">
+                而我们在此基础上可以对识别的文字信息进行了解释。
+            </p>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <br/>
+
+    <div style="width:50%;text-align:center;font-size: 30px;color:white;"><h2>识别结果</h2>
+
+        <div style="border:1px solid #ddd;min-height: 400px;padding: 8px;">
+            <p style="font-size: 20px ">{{result}}</p>
+        </div>
+
+        <div style="clear:both;"></div>
+
+    </div>
+
+    <a href="{{url_for('voiceQA.process_data')}}">
+        <div class="form-group" style="text-align: right;">
+            <button class="btn btn-primary">解释</button>
+        </div>
+    </a>
+
+</body>
+</html>

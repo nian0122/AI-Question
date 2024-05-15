@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head%}
+<link rel = "stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+{% block title%}安中医AI小助手{% endblock %}
+
+{% block li%}
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{{url_for('qa.serch')}}">
+        <input class="form-control mr-sm-2" type="search" placeholder="关键字" aria-label="Search" name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+    </form>
+{% endblock %}
+
+{% block body%}
+        <div class="row" style="margin-top: 20px;">
+            <div class="col"></div>
+            <div class="col-10">
+                <ul class="question-ul">
+                    {% for question in questions %}
+                    <li>
+                        <div class="side-question">
+                            <img class="side-question-avatar" src="{{url_for('static',filename='images/avatar.jpg')}}" alt="">
+                        </div>
+                        <div class="question-main">
+                            <div class="question-title"><a href="{{url_for('qa.qa_detail',qa_id=question.id )}}">{{question.title}}</a></div>
+                            <div class="question-content">{{question.content}}</div>
+                            <div class="question-detail">
+                                <span class="question-author">{{question.author.username}}</span>
+                                <span class="question-time">{{question.create_time}}</span>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col"></div>
+        </div>
+{%endblock%}
